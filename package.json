@@ -1,0 +1,42 @@
+{
+  "name": "screenplay-playwright-automation",
+  "version": "1.0.0",
+  "description": "Suite de pruebas automatizadas para Sauce Demo usando Playwright, Cucumber y Screenplay Pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --tags @smoke",
+    "test:regression": "cucumber-js --tags @regression",
+    "test:login": "cucumber-js --tags @login",
+    "test:cart": "cucumber-js --tags @cart",
+    "report:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
+    "report:open": "allure open reports/allure-report",
+    "report": "npm run report:generate && npm run report:open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Limense/screenplay-playwright-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Limense/screenplay-playwright-automation/issues"
+  },
+  "homepage": "https://github.com/Limense/screenplay-playwright-automation#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.7.0",
+    "@playwright/test": "^1.58.2",
+    "@types/cucumber": "^6.0.1",
+    "@types/node": "^25.3.0",
+    "allure-commandline": "^2.37.0",
+    "allure-cucumberjs": "^3.5.0",
+    "playwright": "^1.58.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
