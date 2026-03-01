@@ -1,8 +1,7 @@
-import { Ability, Performable, Question } from './interfaces'
+import { Ability, Performable, Question } from "./interfaces";
 
 export class Actor {
-
-  private abilities: Map<Function, Ability> = new Map()
+  private abilities: Map<Function, Ability> = new Map();
 
   private constructor(private readonly name: string) {}
 
@@ -11,7 +10,7 @@ export class Actor {
    * Constructor privado fuerza el uso de este Factory Method.
    */
   static named(name: string): Actor {
-    return new Actor(name)
+    return new Actor(name);
   }
 
   /**
@@ -19,10 +18,10 @@ export class Actor {
    * Retorna this para permitir encadenamiento fluido.
    */
   whoCan(...abilities: Ability[]): this {
-    abilities.forEach(ability => {
-      this.abilities.set(ability.constructor, ability)
-    })
-    return this
+    abilities.forEach((ability) => {
+      this.abilities.set(ability.constructor, ability);
+    });
+    return this;
   }
 
   /**
@@ -31,7 +30,7 @@ export class Actor {
    */
   async attemptsTo(...performables: Performable[]): Promise<void> {
     for (const performable of performables) {
-      await performable.performAs(this)
+      await performable.performAs(this);
     }
   }
 
@@ -40,27 +39,27 @@ export class Actor {
    * T es inferido automáticamente según la Question recibida.
    */
   async asks<T>(question: Question<T>): Promise<T> {
-    return question.answeredBy(this)
+    return question.answeredBy(this);
   }
 
   /**
    * Recupera una habilidad específica del Actor.
    * Lanza error descriptivo si la habilidad no fue asignada.
    */
-  abilityTo<T extends Ability>(abilityClass: new (...args: any[]) => T): T {
-    const ability = this.abilities.get(abilityClass)
+  abilityTo<T extends Ability>(abilityClass: Function): T {
+    const ability = this.abilities.get(abilityClass);
 
     if (!ability) {
       throw new Error(
         `El actor "${this.name}" no tiene la habilidad "${abilityClass.name}". ` +
-        `Asígnala con actor.whoCan(${abilityClass.name}.withPlaywright())`
-      )
+          `Asígnala con actor.whoCan(${abilityClass.name}.withPlaywright())`,
+      );
     }
 
-    return ability as T
+    return ability as T;
   }
 
   getName(): string {
-    return this.name
+    return this.name;
   }
 }

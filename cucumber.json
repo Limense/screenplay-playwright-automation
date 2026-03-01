@@ -1,14 +1,19 @@
 {
   "default": {
     "require": [
-      "src/support/**/*.ts",
+      "support/hooks.ts",
       "tests/step-definitions/**/*.ts"
     ],
-    "paths": ["features/**/*.feature"],
-    "requireModule": ["ts-node/register"],
+    "paths": [
+      "features/**/*.feature"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
     "format": [
       "progress-bar",
-      "allure-cucumberjs/reporter"
+      "allure-cucumberjs/reporter",
+      "html:reports/cucumber-report.html"
     ],
     "formatOptions": {
       "resultsDir": "reports/allure-results"

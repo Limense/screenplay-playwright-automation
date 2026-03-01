@@ -7,9 +7,19 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "resolveJsonModule": true
+    "rootDir": "./",
+    "resolveJsonModule": true,
+    "sourceMap": true
   },
-  "include": ["src/**/*", "features/**/*", "tests/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*",
+    "features/**/*",
+    "tests/**/*",
+    "support/**/*"
+, "support"  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "reports"
+  ]
 }
